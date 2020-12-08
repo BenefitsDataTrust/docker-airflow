@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # Airflow
-ARG AIRFLOW_VERSION=1.10.9
+ARG AIRFLOW_VERSION=1.10.12
 ARG AIRFLOW_USER_HOME=/usr/local/airflow
 ARG AIRFLOW_DEPS=""
 ARG PYTHON_DEPS=""
@@ -58,9 +58,7 @@ RUN set -ex \
     && cat /etc/sudoers > /etc/t.t \
     && usermod -aG sudo airflow \
     && echo 'airflow ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
-    && pip install -U setuptools wheel \
-    && pip install attrs \
-    && pip install cattrs==1.0.0 \
+    && pip install -U pip setuptools wheel \
     && pip install pytz \
     && pip install pyOpenSSL \
     && pip install ndg-httpsclient \
